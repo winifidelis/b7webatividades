@@ -1,0 +1,19 @@
+com o instalador do laravel configurado no computador, se eu não tiver execute
+#composer require laravel/ui
+
+executei o comando abaixo, ele instalou a versão 8
+#laravel new ApiDevBarber
+
+como estou criando uma API irei utilizar um pacote para fazer altenticação JWT
+tymondesigns/jwt/auth
+https://github.com/tymondesigns/jwt-auth
+https://jwt-auth.readthedocs.io/en/develop/laravel-installation/
+
+#composer require tymon/jwt-auth
+
+executo o comando abaixo para publicar os arquivos do JWT
+isso irá criar o arquivo jwt.php na pasta config
+#php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
+
+executar o comando abaixo para criar uma chave secreta no meu arquivo env
+#php artisan jwt:secret
