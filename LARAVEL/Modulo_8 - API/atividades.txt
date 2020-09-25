@@ -17,3 +17,4 @@ isso irá criar o arquivo jwt.php na pasta config
 
 executar o comando abaixo para criar uma chave secreta no meu arquivo env
 #php artisan jwt:secret
+
