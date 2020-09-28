@@ -1,0 +1,66 @@
+Criando o projeto
+#npx react-native init app
+
+instalando as dependencias
+-estilos
+# npm install styled-components
+-navegação
+# npm install @react-navigation/native
+-https://reactnavigation.org/docs/getting-started
+-Installing dependencies into a bare React Native project
+--o comando abaixo eu peguei no link acima
+#npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+
+#npm install @react-navigation/stack
+#npm install @react-navigation/bottom-tabs
+
+pacote para salvar o token jwt
+#npm install @react-native-community/async-storage
+
+pegar localização do usuários
+#npm install @react-native-community/geolocation
+
+depois adicionei no arquivo
+C:\Users\PMAG\Desktop\WiniProjetos\b7webatividades\REACT_NATIVE\Modulo_16 - Pojeto DevBarber\devbarber\app\index.js
+import 'react-native-gesture-handler';
+
+pacote que pede permissões para usar o hardware do usuário
+#npm install react-native-permissions
+depois de instalar essa dependencia eu tenho que adicionar no arquivo
+C:\Users\PMAG\Desktop\WiniProjetos\b7webatividades\REACT_NATIVE\Modulo_16 - Pojeto DevBarber\devbarber\app\android\app\src\main\AndroidManifest.xml
+adcionar =>  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+......
+package="com.app">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+..........
+
+
+
+
+#npm install react-native-swiper
+#npm install react-native-svg
+#npm install react-native-svg-transformer
+
+depois modifiquei o arquivo
+C:\Users\PMAG\Desktop\WiniProjetos\b7webatividades\REACT_NATIVE\Modulo_16 - Pojeto DevBarber\devbarber\app\metro.config.js
+modifiquei pela configuração que está no site
+https://github.com/kristerkari/react-native-svg-transformer
+==>Step 3: Configure the react native packager
+
+para executar o projeto 
+#npx react-native run-android
+
+
+
+
+
+
+
+
+
+
