@@ -9,6 +9,7 @@ import EmailIcon from '../../assets/email.svg';
 import LockIcon from '../../assets/lock.svg';
 import PersonIcon from '../../assets/person.svg';
 
+import Api from '../../Api';
 
 export default () => {
 
@@ -18,8 +19,18 @@ export default () => {
     const [emailField, setEmailField] = useState('');
     const [passwordField, setPAsswordField] = useState('');
 
-    const handleSignClick = () => {
-
+    const handleSignClick = async () => {
+        if (emailField != '' && passwordField != '' && nameField != '') {
+            let res = await Api.signUp(nameField, emailField, passwordField);
+            console.log(res)
+            if (res.token) {
+                alert('Deu certo');
+            } else {
+                alert('Erro: '+res.error);
+            }
+        } else {
+            alert('Preencha os campos!');
+        }
     }
 
     const handleMessageButtonClick = () => {
