@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-community/async-storage';
+
+
+
 import { Container, InputArea, CustomButton, CustomButtonText, SingMessageButton, SingMessageButtonText, SingMessageButtonTextBold } from './styles'
 
-import SignInput from '../../components/SignInput'
+import SignInput from '../../components/SignInput';
+import { UserContext } from '../../contexts/UserContext';
 
 import BarberLogo from '../../assets/barber.svg';
 import EmailIcon from '../../assets/email.svg';
@@ -12,7 +17,7 @@ import Api from '../../Api';
 
 
 export default () => {
-
+    const { dispatch: userDispatch } = useContext(UserContext);
     const navigation = useNavigation();
 
     const [emailField, setEmailField] = useState('winifidelis@gmail.com');
@@ -23,7 +28,19 @@ export default () => {
             let json = await Api.signIn(emailField, passwordField);
             //console.log(json);
             if (json.token) {
-                alert('Deu certo');
+
+                await AsyncStorage.setItem('token', json.token);
+                userDispatch({
+                    type: 'setAvatar',
+                    payload: {
+                        avatar: json.data.avatar
+                    }
+                });
+
+                navigation.reset({
+                    routes: [{ name: 'MainTab' }]
+                })
+
             } else {
                 alert('E-mail e/ou senha errados');
             }
