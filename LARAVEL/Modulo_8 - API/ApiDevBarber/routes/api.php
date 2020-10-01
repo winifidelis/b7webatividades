@@ -10,6 +10,9 @@ use App\Http\Controllers\BarberController;
 Route::get('/ping', function(){
     return ['pong'=>true];
 });
+Route::get('/', function(){
+    return ['is Alive'];
+});
 
 Route::get('/401', [AuthController::class, 'unauthorized'])->name('login');
 

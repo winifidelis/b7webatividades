@@ -6,6 +6,9 @@ import Swiper from 'react-native-swiper';
 import Starts from '../../components/Stars';
 
 import FavoriteIcon from '../../assets/favorite.svg';
+import BackIcon from '../../assets/back.svg';
+import NavPrevIcon from '../../assets/nav_prev.svg';
+import NavNextIcon from '../../assets/nav_next.svg';
 
 import {
     Container,
@@ -17,12 +20,31 @@ import {
     FakeSwiper,
     PageBody,
     UserInfoArea,
-    ServiceArea,
     TestimonialArea,
+    TestimonialItem,
+    TestimonialInfo,
+    TestimonialName,
+    TestimonialBody,
+
+
     UserAvatar,
     UserInfo,
     UserInfoName,
-    UserFavButton
+    UserFavButton,
+    BackButton,
+    LoadingIcon,
+
+
+    ServiceArea,
+    ServicesTitle,
+    ServiceItem,
+    ServiceInfo,
+    ServiceName,
+    ServicePrice,
+    ServiceChooseButton,
+    ServiceChooseBtnText
+
+
 } from './styles';
 
 
@@ -56,6 +78,10 @@ export default () => {
         getBarberInfo();
     }, []);
 
+    const handleBackButton = () => {
+        navigation.goBack();
+    }
+
     return (
         <Container>
             <Scroller>
@@ -81,20 +107,61 @@ export default () => {
                         <UserAvatar source={{ uri: userInfo.avatar }} />
                         <UserInfo>
                             <UserInfoName>{userInfo.name}</UserInfoName>
-                            <Starts starts={userInfo.stars} showNumber={true} />
+                            <Starts stars={userInfo.stars} showNumber={true} />
                         </UserInfo>
                         <UserFavButton>
                             <FavoriteIcon width="24" height="24" fill="#FF0000" />
                         </UserFavButton>
                     </UserInfoArea>
-                    <ServiceArea>
 
-                    </ServiceArea>
-                    <TestimonialArea>
+                    {loading &&
+                        <LoadingIcon size="large" color="#000" />
+                    }
 
-                    </TestimonialArea>
+                    {userInfo.services &&
+                        <ServiceArea>
+                            <ServicesTitle>Lista de serviços</ServicesTitle>
+
+                            {userInfo.services.map((item, key) => (
+                                <ServiceItem key={key}>
+                                    <ServiceInfo>
+                                        <ServiceName>{item.name}</ServiceName>
+                                        <ServicePrice>R$ {item.price}</ServicePrice>
+                                    </ServiceInfo>
+                                    <ServiceChooseButton>
+                                        <ServiceChooseBtnText>Agendar</ServiceChooseBtnText>
+                                    </ServiceChooseButton>
+                                </ServiceItem>
+                            ))}
+                        </ServiceArea>
+                    }
+
+                    {userInfo.testimonials && userInfo.testimonials.length > 0 &&
+                        <TestimonialArea>
+                            <Swiper
+                                style={{ height: 110 }}
+                                showsPagination={false}
+                                showsButtons={true}
+                                prevButton={<NavPrevIcon width="35" height="35" fill="#000000" />}
+                                nextButton={<NavNextIcon width="35" height="35" fill="#000000" />}
+                            >
+                                {userInfo.testimonials.map((item, key) => (
+                                    <TestimonialItem key={key}>
+                                        <TestimonialInfo>
+                                            <TestimonialName>{item.name}</TestimonialName>
+                                            <Stars stars={item.rate} showNumber={false} />
+                                        </TestimonialInfo>
+                                        <TestimonialBody>{item.body}</TestimonialBody>
+                                    </TestimonialItem>
+                                ))}
+                            </Swiper>
+                        </TestimonialArea>
+                    }
                 </PageBody>
             </Scroller>
+            <BackButton onPress={handleBackButton}>
+                <BackIcon width="44" height="44" fill="#FFFFFF" />
+            </BackButton>
         </Container>
     )
 }
