@@ -68,7 +68,7 @@ export default () => {
             lat = coords.latitude;
             lng = coords.longitude;
         }
-        console.log('tentando obter barbeiros'+' - '+lat+' - '+lng+' - '+locationText)
+        //console.log('tentando obter barbeiros'+' - '+lat+' - '+lng+' - '+locationText)
         let res = await Api.getBarbers(lat, lng, locationText);
         //console.log('barbeiros obtidos')
         //console.log(res);
