@@ -1,0 +1,37 @@
+Criando o projeto
+#npx react-native init DevsUber
+
+parar testar a instalação do projeto no ios entre na pasta do /DevUser/ios
+detalhe isso funciona no mac
+#cd /DevUser/ios
+#pod install
+ele vai gerar alguns arquivos
+execute
+#react-native run-ios
+
+instalar pacotes
+#npm install react-navigation react-native-gesture-handler react-native-reanimated react-native-screens --save
+#npm install styled-components
+
+é sempre com seguir o manual do pacote, 
+EXISTE COISA PARA SEREM FEITAS PARA TUDO FUNCIONAR!!!!
+https://reactnavigation.org/docs/getting-started
+
+instalar pacotes do redux para trocar dados entre as telas e persistencia de dados
+#npm install redux react-redux redux-persist --save
+
+#npm install @react-native-community/async-storage --save
+
+#npm install react-navigation-stack react-navigation-drawer --save
+#npm install @react-navigation/stack
+#npm install @react-navigation/native
+
+#npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+
+
+#npx react-native run-android
+
+
+
+
