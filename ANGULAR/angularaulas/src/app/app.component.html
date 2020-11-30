@@ -1,0 +1,123 @@
+<h1>{{title}}</h1>
+<h4>sub-legenda legal</h4>
+
+{{2+5}}
+<br />
+Meu nome é {{nome}} e tenho {{idade}} de idade
+<br />
+Total de nomes {{nomes.length}}
+<br />
+Nome principal {{nomePrincipal}}
+
+<br /><br />
+<ul>
+  <li *ngFor="let nome of nomes" [style.color]='corPrincipal'>
+    {{nome}}
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let item of objetos" style="color: blue;">
+    {{item.nome}} e tem {{item.idade}} anos de idade
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let item of pessoas" style="color: blue;">
+    {{item.nome}} e tem {{item.idade}} anos de idade - {{item.getTipo()}}
+  </li>
+</ul>
+
+<p *ngIf="pessoas.length > 2">Tem muitos nomes cadastrados</p>
+
+<div *ngIf="pessoas.length <= 4">
+  <input type="text" />
+  <button>Adicionar</button>
+</div>
+
+<div *ngIf="showAviso">
+  {{avisoMsg}}
+</div>
+
+<input type="text" value="{{nomePrincipal}}" /><br />
+<input type="text" [value]="1+2" /><br />
+<input type="text" [value]="nomePrincipal" /><br />
+<input type="text" bind-value="nomePrincipal" /><br />
+<input type="text" [value]="pessoas[0].nome" /><br />
+<input type="text" [disabled]="showInput" /><br />
+
+<img src="{{imagem}}" />src<br />
+<img [src]="imagem" />[src]<br />
+<img bind-src="imagem" />bind-src<br />
+
+<br /><br /><br />
+
+<div [style.width.px]="100">
+  Texto qualquer
+</div>
+<br /><br />
+<div [style]="{width: '100px', height: '100px', fontSize: tamanhoFont, backgroundColor:'#0000FF'}">
+  Texto qualquer
+</div>
+<br /><br />
+<div [class]="{classe1: true, classe2: false}">
+  Verificar as classes no inpesionar do navegador
+</div>
+<div [class]="{classe1: true, classe2: true}">
+  Verificar as classes no inpesionar do navegador
+</div>
+<br /><br />
+<div [class.teste]="false">
+  Verificar as classes no inpesionar do navegador
+</div>
+<div [class.teste]="true">
+  Verificar as classes no inpesionar do navegador
+</div>
+
+<br /><br />
+BOTÕES
+<button (click)="trocarCor('#0000FF')">Colocar AZUL</button>
+<button (click)="trocarCor('#FF0000')">Colocar VERMELHO</button>
+<ul>
+  <li
+  *ngFor="let item of pessoas"
+  [style.color]='corPrincipal'
+  (click)="clicou(item)"
+  >
+    {{item.nome}} e tem {{item.idade}} anos de idade - {{item.getTipo()}}
+  </li>
+</ul>
+
+<br /><br />
+<button (click)="title='Testando 123'">Mudar Título</button>
+
+<br /><br />
+<p>{{nomeDeEvento}}</p>
+
+<input type="text" [value]="nomeDeEvento" (input)="trocarNome($event.target.value)" />
+<input type="text" [value]="nomeDeEvento" (keyup)="trocarNome($event.target.value)" />
+<input type="text" [value]="nomeDeEvento" (keydown)="trocarNome($event.target.value)" />
+<input type="text" [value]="nomeDeEvento" (keyup.enter)="trocarNome($event.target.value)" />
+<br /><br />
+<p>Variável auxiliar: {{nomeInput.value}}</p>
+<input type="text" #nomeInput (keyup.enter)="trocarNome(nomeInput.value); nomeInput.value = ''" />
+
+<p>------------------------------------------------------------------------------------</p>
+Nome: <input
+  type="text"
+  #newNome
+  (keyup)="0"
+  (keyup.enter)="addPessoa(newNome.value,1); newNome.value=''"
+/>
+<br/>
+Idade: <input
+  type="text"
+  #newIdade
+  (keyup)="0"
+  (keyup.enter)="addPessoa('sem nome',newIdade.value); newIdade.value=''"
+/>
+<br/>
+<button
+  (click)="addPessoa(newNome.value,newIdade.value); newNome.value=''; newIdade.value=''"
+>Adicionar Pessoa</button>
+<p>------------------------------------------------------------------------------------</p>
