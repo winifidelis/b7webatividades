@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue.js</title>
+        <meta charset="utf-8" />
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue/vue"></script> !-->
+        
+    </head>
+    <body>
+
+        <div id="app" v-text="frase">
+        </div>
+
+        <div id="app2" v-html="frase">
+        </div>
+
+        <div id="app3">
+            {{frase}}
+        </div>
+
+        <br /><br /><br />
+
+        <div id="placar">
+            <div>{{n}}</div>
+            <span v-if='n > 5'>Parabens, você passou de 5 pontos!</span>
+            <span v-if='aparecer'>----------------------------------</span>
+        </div>
+
+        <br /><br /><br />
+
+        <div id="lista">
+            <ul>
+                <li v-for="info in nomes">
+                    <span>Nome: {{info.nome}}</span>
+                    <span v-text="info.sobrenome"></span>
+                    <span>------ {{info.nome+" "+info.sobrenome+", idade: "+info.idade}}</span>
+                </li>
+            </ul>
+        </div>
+        <br /><br /><br />
+        ----------------------------------
+
+        <div id="app4">
+            <input type="text" v-model="texto" />
+            <span>{{texto}}</span>
+        </div>
+
+        <br /><br /><br />
+
+        <div id="app5">
+            <span>{{n1}}</span>
+            <span>{{n2}}</span>
+            <span>{{n3}}</span>
+            <br />
+            <span>{{n1}}</span>
+            <input type="text" v-model="n2" />
+            <span>{{n1+parseInt(n2)}}</span>
+        </div>
+
+        <br /><br /><br />
+
+        <div id="soma">
+            <span>{{n1}} + {{n2}} =</span>
+            <input type="text" v-model="n3" />
+            <div v-if="n1 + n2 == parseInt(n3)">Acertou</div>
+            <div v-if="n3 != 0 && n1 + n2 != parseInt(n3)">Errou</div>
+        </div>
+
+        <br /><br /><br />
+
+        <div id="metodo">
+            {{mostrar('wini')}}
+            {{mostrar(nome)}}
+        </div>
+
+        <br /><br /><br />
+
+        <div id="paises">
+            <div v-if="pais == 'argentina' ">
+                <p v-html="argentina"></p>
+                <p>América do Sul</p>
+            </div>
+            <div v-if="pais == 'brazil' ">
+                <p v-html="brazil"></p>
+                <p>América do Sul</p>
+            </div>
+            <div v-if="pais == 'china' ">
+                <p v-html="china"></p>
+                <p>Ásia</p>
+            </div>
+            <div v-if="pais == 'uk' ">
+                <p v-html="uk"></p>
+                <p>Europa</p>
+            </div>
+            <div v-if="pais == 'usa' ">
+                <p v-html="usa"></p>
+                <p>América do Norte</p>
+            </div>
+        </div>
+
+        <div id="paises2">
+            <p v-html="(
+                pais=='argentina' ? argentina :
+                pais=='brazil'? brazil :
+                pais=='china'? china :
+                pais=='uk'? uk :
+                pais=='usa'? usa : ''
+            )"></p>
+            <p v-html="(
+                pais=='argentina' ? 'America do Sul' :
+                pais=='brazil'? 'America do Sul' :
+                pais=='china'? 'Ásia' :
+                pais=='uk'? 'Europa' :
+                pais=='usa'? 'América do Norte' : ''
+            )"></p>
+        </div>
+        --------------------------
+        <div id="paises3">
+            <div v-for="pais in paises()">
+                <p v-html="pais.bandeira"></p>
+                <p v-html="pais.continente"></p>
+            </div>
+        </div>
+        --------------------------
+
+        <div id="componente">
+            <pais :nome="china"></pais>
+        </div>
+
+        --------------------------
+        <div id="ciclodevida">
+        </div>
+
+
+        <script src="script.js"></script>
+    </body>
+</html>

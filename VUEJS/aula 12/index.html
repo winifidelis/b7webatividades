@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue.js</title>
+	<meta charset="utf-8" />
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+	<div id="app">
+		<header class="header">
+
+
+		</header>
+		<section class="container">
+			<section class="container__content">
+
+				<div v-if="aviso">Este é um aviso</div>
+				<br />
+				<div v-bind:id="divid">Está é uma div qualquer.. .. ..</div>
+				<br />
+				<a v-bind:href="link">acessar</a>
+				<br />
+				<br />
+				<div v-bind:id="'item-'+n">Div qualquer</div>
+				<br />
+				<button v-on:click="clicou">Clique em mim</button>
+				<br />
+				<br />
+				<!-- prevent :  isso aqui basicamente ignora o evento de submit e executa a função que eu quero-->
+				<form v-on:submit.prevent="enviou">
+					<input type="text" />
+					<input type="submit" value="Enviar"/>
+				</form>
+
+			</section>
+			<aside class="container__sidebar">
+
+
+			</aside>
+		</section>
+		<footer class="footer">
+
+			<span v-text="copyright"></span>
+
+		</footer>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
