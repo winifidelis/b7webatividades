@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue.js</title>
+	<meta charset="utf-8" />
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+	<div id="app">
+		<header class="header">
+
+
+		</header>
+		<section class="container">
+			<section class="container__content">
+
+				<form v-click.selt.prevent="fazerAlgo">
+				</form>
+
+				<br />
+
+				<button v-on:click="addContagem(3, $event)">Clique aqui</button>
+
+				<p>A contgem e: {{contagem}}</p>
+
+				<br />
+
+				<form v-on:submit.prevent="algo">
+					<input type="text"/>
+					<input type="submit" value="Clique para enviar" />
+				</form>
+
+				<br />
+
+				<div class="area" v-on:click.self="algo">
+					<button>Clique e mim</button>
+				</div>
+
+				<br />
+
+				<div class="area1" v-on:click.once="algo">
+					<button>Clique e mim</button>
+				</div>
+
+
+			</section>
+			<aside class="container__sidebar">
+
+
+			</aside>
+		</section>
+		<footer class="footer">
+			
+
+		</footer>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue.js</title>
+	<meta charset="utf-8" />
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<!--<script src="https://cdn.jsdelivr.net/npm/vue"></script>-->
+	<link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+	<div id="app">
+		<header class="header">
+
+
+		</header>
+		<section class="container">
+			<section class="container__content">
+
+				<template v-if="ganhou">
+					<h1>Você ganhou</h1>
+					<small>parabéns</small>
+				</template>
+				<template v-else="ganhou">
+					<h1>Você perdeu</h1>
+					<small>rodou</small>
+				</template>
+
+			</section>
+			<aside class="container__sidebar">
+
+				<h1 v-if="ganhou">Você ganhou</h1>
+				<h1 v-else="ganhou">Você perdeu</h1>
+
+			</aside>
+		</section>
+		<footer class="footer">
+			<h1 v-show="ganhou">Você ganhou</h1>
+			<h1 v-show="!ganhou">Você perdeu</h1>
+		</footer>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>
